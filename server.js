@@ -343,7 +343,7 @@ wss.on('connection', async function connection(ws) {
             if (mapVariation["Players"][playerIndex]) {
                 // Si el jugador está en el mapa, cambia su valor a "none"
                 mapVariation["Players"][playerIndex] = "none";
-                console.log("Removed player " + ws.username + " from map");
+                //console.log("Removed player " + ws.username + " from map");
                 //console.log(maps[ws.mapName][ws.mapVariation])
                 let data = {}
                 data.men = "unmatched"
@@ -359,8 +359,8 @@ wss.on('connection', async function connection(ws) {
             if (mapVariation["Players"][playerIndex]) {
                 // Si el jugador está en el mapa, cambia su valor a "none"
                 mapVariation["Players"][playerIndex] = "none";
-                console.log("Removed player " + ws.username + " from map in playing game");
-                console.log(maps[rec.map][rec.variation])
+                //console.log("Removed player " + ws.username + " from map in playing game");
+                //console.log(maps[rec.map][rec.variation])
                 let data = {}
                 data.men = "unmatched"
                 data = JSON.stringify(data)
@@ -555,11 +555,11 @@ wss.on('connection', async function connection(ws) {
             //console.log(maps[rec.map][rec.variation][rec.player])
 
         } else if (rec.men == 'skillSent'){
-            console.log('Llego el ',rec.skillName)
+            //console.log('Llego el ',rec.skillName)
             
             for (let player in maps[rec.map][rec.variation]["Sockets"]){
 
-                    console.log("Activando skill")
+                    //console.log("Activando skill")
                     let data = {}
                     data.men = "skillActivated"
                     data.skillName = rec.skillName
@@ -1449,7 +1449,7 @@ wss.on('connection', async function connection(ws) {
          
             await database.ref("users").child(rec.user).child("quests").child("n").set("n");
 
-            console.log("quest updated")
+            //console.log("quest updated")
 
             let data = {}
             data.men = "finalTutorialFinished"
@@ -2101,8 +2101,6 @@ async function verificarUsuario(username, password) {
         // Obtenemos el primer usuario del resultado de la consulta (debería ser único)
         const userId = Object.keys(user)[0];
         const userData = user[userId];
-
-        //console.log(userData)
   
         if (userData.password !== password) {
             return { mensaje: 'invalidPassword' };
@@ -2199,9 +2197,9 @@ async function findAvailableSpace(usernamec, mapName, maxHp, pDef, wname, wcat, 
                     map[variation]["humanQtn"] += 1
                     
                     map[variation]["status"] = "waiting"; // Actualizar el estado de la variación
-                    console.log("Jugador creado en: ")
-                    console.log(variation)
-                    console.log(maps[mapName][variation])
+                    //console.log("Jugador creado en: ")
+                    //console.log(variation)
+                    //console.log(maps[mapName][variation])
 
                     //LOST EDEN ONLY
                     if (mapName == "lostEden"){
@@ -2451,8 +2449,8 @@ function addBotsToWaitingGames() {
                     game.countBots = 0
                 }
 
-                console.log("Se puede agregar bots en: ")
-                console.log(variation)
+                //console.log("Se puede agregar bots en: ")
+                //console.log(variation)
 
                 let botAdded = false;
           
@@ -2462,7 +2460,7 @@ function addBotsToWaitingGames() {
                 let posY = 0                
 
                 if (game["Players"][`player${i}`] === "none") {
-                    console.log("El mapa dondese agrega el bot es: " + mapName)
+                    //console.log("El mapa dondese agrega el bot es: " + mapName)
 
                     // Mapa multijugador LOST EDEN
                     if (mapName == "lostEden"){                       
@@ -2506,7 +2504,7 @@ function addBotsToWaitingGames() {
                             wName: selectedWeapon,
                             efs: {}
                         };
-                        console.log(`Agregando bot en ${variation}`);
+                        //console.log(`Agregando bot en ${variation}`);
                         //console.log(game);
                         botAdded = true;
                         break;
